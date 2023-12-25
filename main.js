@@ -4,7 +4,7 @@ let play=true
 
 let changeAtan2StartX,changeAtan2StartY
 
-let i=1
+let rotationDegree=1
 let oldDeg=0
 let index=0
 let chosenNumber=99
@@ -31,7 +31,6 @@ dial.addEventListener("mousedown",(e)=>{
             default: chosenNumber=99;break
         }
         mouseDown=true
-        
         startRotating()
 }
 })
@@ -45,10 +44,10 @@ document.addEventListener("mousemove",(e)=>{
     if(mouseDown && chosenNumber<99){
         let newDeg=(Math.atan2(e.pageY-changeAtan2StartY,e.pageX-changeAtan2StartX)*180/Math.PI+180).toFixed(0)
         if(oldDeg<newDeg){
-            i+=3
+            rotationDegree+=3
             oneClick()
-        }else if(oldDeg>newDeg && i>1) {
-            i-=3
+        }else if(oldDeg>newDeg && rotationDegree>1) {
+            rotationDegree-=3
             goBackSound()
         }
         oldDeg=newDeg
@@ -56,10 +55,10 @@ document.addEventListener("mousemove",(e)=>{
 })
 function clearRotation(){
     setTimeout(()=>{
-        if(i>1){
+        if(rotationDegree>1){
             retracting=true
-            i-=2
-            three.style.transform=`rotateZ(${i}deg)`  
+            rotationDegree-=2
+            bigCircle.style.transform=`rotateZ(${rotationDegree}deg)`  
             goBackSound()
             clearRotation()
         } else retracting=false
@@ -68,7 +67,7 @@ function clearRotation(){
 function startRotating(){
     setTimeout(()=>{
         if(mouseDown){
-                if(i>28+30*chosenNumber){
+                if(rotationDegree>28+30*chosenNumber){
                     document.dispatchEvent(
                         new MouseEvent("mouseup",{
                         button: 0
@@ -76,7 +75,7 @@ function startRotating(){
                     if(chosenNumber==10) chosenNumber=0
                     input[index].value+=chosenNumber
                 }
-            three.style.transform=`rotateZ(${i}deg)`  
+            bigCircle.style.transform=`rotateZ(${rotationDegree}deg)`  
             startRotating()
         }
     },1000/30)

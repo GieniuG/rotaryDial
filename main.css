@@ -27,16 +27,16 @@ button{
 img{
     width: 20vw;
 }
-#one{
+#backCircle{
     z-index: 1;
 }
-#two{
+#numbers{
     z-index: 2;
 }
-#three{
+#bigCircle{
     z-index: 3;
 }
-#four{
+#stoper{
     z-index: 4;
 }
 span{
