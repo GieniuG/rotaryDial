@@ -12,10 +12,13 @@ input{
     overflow:clip;
     position: sticky;
     float: right;
-    /* background-color: rgb(172, 0, 0); */
-    border-radius: 6%;    
     width: 20vw;
     padding: 1vw;
+}
+#rotating{
+    margin-bottom: 0.3vw;
+    width: 20vw;
+    /* background-color: rgb(172, 0, 0); */
 }
 #reset{
     display: flex;

@@ -9,13 +9,15 @@
 </head>
 <body>
     <div id="dial">
+    <span id="rotating">
         <span>
         <img src="rotary_back_circle.svg" draggable="false" id="backCircle">
         <img src="rotary_numbers.svg"  draggable="false" id="numbers">
         <img src="rotary_big_circle.svg" draggable="false" id="bigCircle">
         <img src="rotary_stoper.svg"  draggable="false" id="stoper">
         </span>
-        <span id="reset"><button onclick="clearInput()">RESET</button></span>
+    </span>
+    <span id="reset"><button onclick="clearInput()">RESET</button></span>
     </div>
     Phone number:<input type="tel" class="input" onclick="index=0" readonly><br>
     Smth:<input type="text" class="input" onclick="index=1" readonly>
