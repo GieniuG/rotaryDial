@@ -1,0 +1,45 @@
+body{
+    background-color: #1a1a1a;
+    color: white;
+    font-size: 40px;
+}
+input{
+    width: 200px;
+    height: 45px;
+    font-size: 40px;
+}
+#dial{
+    overflow:clip;
+    position: sticky;
+    float: right;
+    /* background-color: rgb(172, 0, 0); */
+    border-radius: 6%;    
+    width: 20vw;
+    padding: 1vw;
+}
+#reset{
+    display: flex;
+    justify-content: center;
+}
+button{
+    width: 8vw;
+}
+img{
+    width: 20vw;
+}
+#one{
+    z-index: 1;
+}
+#two{
+    z-index: 2;
+}
+#three{
+    z-index: 3;
+}
+#four{
+    z-index: 4;
+}
+span{
+    display: grid;
+    grid-template-columns: repeat(15,0);
+}

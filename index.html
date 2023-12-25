@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Rotary Dial</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+<body>
+    <div id="dial">
+        <span>
+        <img src="rotary_back_circle.svg" draggable="false" id="one">
+        <img src="rotary_numbers.svg"  draggable="false" id="two">
+        <img src="rotary_big_circle.svg" draggable="false" id="three">
+        <img src="rotary_stoper.svg"  draggable="false" id="four">
+        </span>
+        <span id="reset"><button onclick="clearInput()">RESET</button></span>
+    </div>
+    Phone number:<input type="tel" class="input" onclick="index=0" readonly><br>
+    Smth:<input type="text" class="input" onclick="index=1" readonly>
+</body>
+<script src='main.js'></script>
+</html>
