@@ -11,39 +11,27 @@ let chosenNumber=99
 
 const input=document.getElementsByClassName("input")
 
-function eo(){
-    console.log(chosenNumber)
-}
-
 dial.addEventListener("mousedown",(e)=>{
     if(e.button==0 && !retracting){
         changeAtan2StartX=dial.getBoundingClientRect().x+dial.getBoundingClientRect().width/2
         changeAtan2StartY=dial.getBoundingClientRect().y+dial.getBoundingClientRect().width/2
         
         let angle=(Math.atan2(e.pageY-changeAtan2StartY,e.pageX-changeAtan2StartX)*180/Math.PI+180).toFixed(0) //int deg
-        
-        if(angle>236 && angle<263)      chosenNumber=10
-        else if(angle>268 && angle<292) chosenNumber=9
-        else if(angle>299 && angle<322) chosenNumber=8
-        else if(angle>329 && angle<351) chosenNumber=7
-        else if(angle>0 && angle<23)    chosenNumber=6
-        else if(angle>29 && angle<54)   chosenNumber=5
-        else if(angle>58 && angle<82)   chosenNumber=4
-        else if(angle>87 && angle<112)  chosenNumber=3
-        else if(angle>117 && angle<142) chosenNumber=2
-        else if(angle>147 && angle<172) chosenNumber=1
-        else                            chosenNumber=99
-
-        // [
-        //     {
-        //         min: 236,
-        //         max: 263,
-        //         choosen: 10
-        //     }
-        // ]
-
+        switch(true){
+            case angle>236 && angle<263: chosenNumber=10;break
+            case (angle > 268 && angle < 292): chosenNumber = 9; break;
+            case (angle > 299 && angle < 322): chosenNumber = 8; break;
+            case (angle > 329 && angle < 351): chosenNumber = 7; break;
+            case (angle > 0 && angle < 23): chosenNumber = 6; break;
+            case (angle > 29 && angle < 54): chosenNumber = 5; break;
+            case (angle > 58 && angle < 82): chosenNumber = 4; break;
+            case (angle > 87 && angle < 112): chosenNumber = 3; break;
+            case (angle > 117 && angle < 142): chosenNumber = 2; break;
+            case (angle > 147 && angle < 172): chosenNumber = 1; break;
+            default: chosenNumber=99;break
+        }
         mouseDown=true
-
+        
         startRotating()
 }
 })
