@@ -4,7 +4,7 @@ body{
     font-size: 40px;
 }
 input{
-    width: 200px;
+    width: 900px;
     height: 45px;
     font-size: 40px;
 }
@@ -26,6 +26,8 @@ input{
 }
 button{
     width: 8vw;
+    height: 1.5vw;
+    background-color: rgb(182, 182, 182);
 }
 img{
     width: 20vw;

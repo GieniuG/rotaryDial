@@ -17,10 +17,11 @@
         <img src="rotary_stoper.svg"  draggable="false" id="stoper">
         </span>
     </span>
-    <span id="reset"><button onclick="clearInput()">RESET</button></span>
+    <span id="reset"><button onclick="chars.capsChange()" id="caps">Caps OFF</button><button onclick="clearInput()">RESET</button><button onclick="chars.lastNumber=99">Confirm letter</button></span>
     </div>
     Phone number:<input type="tel" class="input" onclick="index=0" readonly><br>
-    Smth:<input type="text" class="input" onclick="index=1" readonly>
+    Number:<input type="number" class="input" onclick="index=1" readonly><br>
+    Text:<input type="text" class="input" onclick="index=2" readonly>
 </body>
 <script src='main.js'></script>
 </html>

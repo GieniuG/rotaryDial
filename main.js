@@ -4,12 +4,53 @@ let play=true
 
 let changeAtan2StartX,changeAtan2StartY
 
-let rotationDegree=1
+let rotationDegree=0
 let oldDeg=0
 let index=0
 let chosenNumber=99
 
 const input=document.getElementsByClassName("input")
+
+const chars={
+    capsOn:false,
+    lastNumber: 99,
+    characterIndex: 0,
+    1:["1"],
+    2:["a","b","c","2"],
+    3:["d","e","f","3"],
+    4:["g","h","i","4"],
+    5:["j","k","l","5"],
+    6:["m","n","o","6"],
+    7:["p","r","s","q","7"],
+    8:["t","u","v","8"],
+    9:["w","x","y","z","9"],
+    0:["@",".","-","_","0"],
+    displayCharacter(){
+        if(chosenNumber==this.lastNumber && this[chosenNumber].length>=this.characterIndex+2){
+            input[index].value=input[index].value.substring(0,input[index].value.length-1) 
+            this.characterIndex++
+        }else{
+            this.characterIndex=0
+        }
+        this.lastNumber=chosenNumber
+        if(this.capsOn){
+            input[index].value+=this[chosenNumber][this.characterIndex].toUpperCase()
+        }else{
+            input[index].value+=this[chosenNumber][this.characterIndex]
+        }
+    },
+    capsChange(){
+        if(this.capsOn){
+            caps.style.backgroundColor="rgb(182, 182, 182)"
+            caps.innerHTML="Caps OFF"
+            this.capsOn=false
+        }else {
+            caps.style.backgroundColor="rgb(126, 126, 126)"
+            caps.innerHTML="Caps ON"
+            this.capsOn=true
+        }
+    },
+}
 
 rotating.addEventListener("mousedown",(e)=>{
     if(e.button==0 && !retracting){
@@ -46,7 +87,7 @@ document.addEventListener("mousemove",(e)=>{
         if(oldDeg<newDeg){
             rotationDegree+=3
             oneClick()
-        }else if(oldDeg>newDeg && rotationDegree>1) {
+        }else if(oldDeg>newDeg && rotationDegree>0) {
             rotationDegree-=3
             goBackSound()
         }
@@ -55,13 +96,17 @@ document.addEventListener("mousemove",(e)=>{
 })
 function clearRotation(){
     setTimeout(()=>{
-        if(rotationDegree>1){
+        if(rotationDegree>0){
             retracting=true
             rotationDegree-=2
             bigCircle.style.transform=`rotateZ(${rotationDegree}deg)`  
             goBackSound()
             clearRotation()
-        } else retracting=false
+        } else {
+            retracting=false
+            rotationDegree=0
+            bigCircle.style.transform=`rotateZ(0deg)`  
+        }
     },1000/30)
 }
 function startRotating(){
@@ -73,7 +118,11 @@ function startRotating(){
                         button: 0
                     }))
                     if(chosenNumber==10) chosenNumber=0
-                    input[index].value+=chosenNumber
+                    if(input[index].type=="tel" || input[index].type=="number"){
+                        input[index].value+=chosenNumber
+                    } else{
+                    chars.displayCharacter()
+                    }
                 }
             bigCircle.style.transform=`rotateZ(${rotationDegree}deg)`  
             startRotating()
