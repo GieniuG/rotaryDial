@@ -10,18 +10,30 @@
 <body>
     <div id="dial">
     <span id="rotating">
-        <span>
         <img src="rotary_back_circle.svg" draggable="false" id="backCircle">
         <img src="rotary_numbers.svg"  draggable="false" id="numbers">
         <img src="rotary_big_circle.svg" draggable="false" id="bigCircle">
         <img src="rotary_stoper.svg"  draggable="false" id="stoper">
-        </span>
     </span>
-    <span id="reset"><button onclick="chars.capsChange()" id="caps">Caps OFF</button><button onclick="clearInput()">RESET</button><button onclick="chars.lastNumber=99">Confirm letter</button></span>
+    <span id="buttons">
+        <button onclick="buttonClickSound();chars.capsChange()" id="caps" class="rotButton">Caps OFF</button>
+        <button onclick="buttonClickSound();clearInput()" class="rotButton">Clear</button>
+        <button onclick="chars.lastNumber=99;buttonClickSound()" class="rotButton">Confirm character</button></span>
     </div>
-    Phone number:<input type="tel" class="input" onclick="index=0" readonly><br>
-    Number:<input type="number" class="input" onclick="index=1" readonly><br>
-    Text:<input type="text" class="input" onclick="index=2" readonly>
+    <div class="container">
+        <div class="inputContainer">
+            Phone number:<input type="tel" class="input" onclick="index=0" readonly>
+        </div>
+        <div class="inputContainer">
+            Number:<input type="number" class="input" onclick="index=1" readonly>
+        </div>
+        <div class="inputContainer">
+            Text:<input type="text" class="input" onclick="index=2" readonly>
+        </div>
+        <div class="inputContainer">
+            e-mail:<input type="mail" class="input" onclick="index=3" readonly>
+        </div>
+    </div>    
 </body>
 <script src='main.js'></script>
 </html>

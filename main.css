@@ -3,6 +3,14 @@ body{
     color: white;
     font-size: 40px;
 }
+.container{
+    padding-top: 90px;
+}
+.inputContainer{
+    width: 1200px;
+    display: flex;
+    justify-content:space-between;
+}
 input{
     width: 900px;
     height: 45px;
@@ -10,27 +18,37 @@ input{
 }
 #dial{
     overflow:clip;
-    position: sticky;
     float: right;
-    width: 20vw;
+    width: 21rem;
     padding: 1vw;
 }
 #rotating{
     margin-bottom: 0.3vw;
-    width: 20vw;
+    width: inherit;
     /* background-color: rgb(172, 0, 0); */
 }
-#reset{
+#buttons{
     display: flex;
     justify-content: center;
+    gap:5px;
 }
-button{
-    width: 8vw;
-    height: 1.5vw;
-    background-color: rgb(182, 182, 182);
+.rotButton{
+    width: 7rem;
+    height: 2.5rem;
+    background-color: hsl(205, 86%, 63%);
+    backdrop-filter: blur(2px);
+    border-radius: 20px;
+    border-color: hsl(0, 0%, 90%);
+    font-weight: bold;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.6);
+}
+.rotButton:hover{
+    border-color: hsl(0, 0%, 90%);
+    color:hsl(0, 0%, 90%);
+    text-shadow: 0 0 10px white;
 }
 img{
-    width: 20vw;
+    width: inherit;
 }
 #backCircle{
     z-index: 1;
@@ -40,9 +58,12 @@ img{
 }
 #bigCircle{
     z-index: 3;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.596))
+    hue-rotate(0deg);
 }
 #stoper{
     z-index: 4;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.596))
 }
 span{
     display: grid;

@@ -15,7 +15,7 @@ const chars={
     capsOn:false,
     lastNumber: 99,
     characterIndex: 0,
-    1:["1"],
+    1:[" ","1"],
     2:["a","b","c","2"],
     3:["d","e","f","3"],
     4:["g","h","i","4"],
@@ -41,11 +41,15 @@ const chars={
     },
     capsChange(){
         if(this.capsOn){
-            caps.style.backgroundColor="rgb(182, 182, 182)"
+            caps.style.backgroundColor=""
+            caps.style.color=""
+            caps.style.textShadow=""
             caps.innerHTML="Caps OFF"
             this.capsOn=false
         }else {
-            caps.style.backgroundColor="rgb(126, 126, 126)"
+            caps.style.backgroundColor="hsl(205, 86%, 45%)"
+            caps.style.color="hsl(150, 100%, 60%)"
+            caps.style.textShadow="0 0 10px yellow"
             caps.innerHTML="Caps ON"
             this.capsOn=true
         }
@@ -121,7 +125,7 @@ function startRotating(){
                     if(input[index].type=="tel" || input[index].type=="number"){
                         input[index].value+=chosenNumber
                     } else{
-                    chars.displayCharacter()
+                        chars.displayCharacter()
                     }
                 }
             bigCircle.style.transform=`rotateZ(${rotationDegree}deg)`  
@@ -129,10 +133,13 @@ function startRotating(){
         }
     },1000/30)
 }
-const audioContext = new (window.AudioContext || window.webkitAudioContext)()
-
 function clearInput(){
     input[index].value=""
+    chars.lastNumber=99
+}
+const audioContext = new (window.AudioContext || window.webkitAudioContext)()
+
+function buttonClickSound(){
     const oscillator = audioContext.createOscillator()
     
     oscillator.type="sawtooth"
@@ -146,8 +153,8 @@ function clearInput(){
     oscillator.start(audioContext.currentTime)
     
     oscillator.stop(audioContext.currentTime+.1)
+    
 }
-
 function oneClick(){
     if(play){
         const oscillator = audioContext.createOscillator()
@@ -167,7 +174,6 @@ function oneClick(){
         setTimeout(()=>play=true,450)
     }
 }
-
 function goBackSound(){
     const oscillator = audioContext.createOscillator()
     oscillator.type="sawtooth"

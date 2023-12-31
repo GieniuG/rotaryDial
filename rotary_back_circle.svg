@@ -16,12 +16,11 @@
      style="display:inline"
      transform="translate(0.05,0.05)">
     <circle
-       style="fill:#ececec;stroke-width:1.5;stroke-linecap:round;paint-order:markers fill stroke"
+       style="display:inline;fill:#fafafa;stroke-width:1.5;stroke-linecap:round;paint-order:markers fill stroke"
        id="path90"
-       cx="105.00005"
-       cy="148.49947"
-       r="78.042"
-       transform="translate(-26.958052,-70.457473)" />
+       cx="77.942001"
+       cy="77.941994"
+       r="77.941994" />
     <path
        id="path9"
        style="display:inline;opacity:0.0132006;fill:none;stroke:#999999;stroke-width:0.1;stroke-linecap:round;stroke-dasharray:none;paint-order:markers fill stroke"
