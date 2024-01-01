@@ -9,16 +9,17 @@
 </head>
 <body>
     <div id="dial">
-    <span id="rotating">
+    <div id="rotating">
         <img src="rotary_back_circle.svg" draggable="false" id="backCircle">
         <img src="rotary_numbers.svg"  draggable="false" id="numbers">
         <img src="rotary_big_circle.svg" draggable="false" id="bigCircle">
         <img src="rotary_stoper.svg"  draggable="false" id="stoper">
-    </span>
-    <span id="buttons">
+    </div>
+    <div id="buttons">
         <button onclick="buttonClickSound();chars.capsChange()" id="caps" class="rotButton">Caps OFF</button>
         <button onclick="buttonClickSound();clearInput()" class="rotButton">Clear</button>
-        <button onclick="chars.lastNumber=99;buttonClickSound()" class="rotButton">Confirm character</button></span>
+        <button onclick="chars.lastNumber=99;buttonClickSound()" class="rotButton">Confirm character</button>
+    </div>
     </div>
     <div class="container">
         <div class="inputContainer">

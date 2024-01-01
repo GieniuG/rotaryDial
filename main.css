@@ -25,6 +25,8 @@ input{
 #rotating{
     margin-bottom: 0.3vw;
     width: inherit;
+    display: grid;
+    grid-template-columns: repeat(15,0);
     /* background-color: rgb(172, 0, 0); */
 }
 #buttons{
@@ -64,8 +66,4 @@ img{
 #stoper{
     z-index: 4;
     filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.596))
-}
-span{
-    display: grid;
-    grid-template-columns: repeat(15,0);
 }

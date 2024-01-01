@@ -2,7 +2,8 @@ let mouseDown=false
 let retracting=false
 let play=true
 
-let changeAtan2StartX,changeAtan2StartY
+let centerX,centerY
+let radius
 
 let rotationDegree=0
 let oldDeg=0
@@ -55,15 +56,16 @@ const chars={
         }
     },
 }
-
 rotating.addEventListener("mousedown",(e)=>{
     if(e.button==0 && !retracting){
-        changeAtan2StartX=rotating.getBoundingClientRect().x+rotating.getBoundingClientRect().width/2
-        changeAtan2StartY=rotating.getBoundingClientRect().y+rotating.getBoundingClientRect().width/2
+        centerX=rotating.getBoundingClientRect().x+rotating.getBoundingClientRect().width/2
+        centerY=rotating.getBoundingClientRect().y+rotating.getBoundingClientRect().width/2
         
-        let angle=(Math.atan2(e.pageY-changeAtan2StartY,e.pageX-changeAtan2StartX)*180/Math.PI+180).toFixed(0) //int deg
+        radius=Math.sqrt((e.pageX-centerX)**2+(e.pageY-centerY)**2)
+
+        let angle=(Math.atan2(e.pageY-centerY,e.pageX-centerX)*180/Math.PI+180).toFixed(0) //int deg
         switch(true){
-            case angle>236 && angle<263: chosenNumber=10; break
+            case (angle>236 && angle<263): chosenNumber=10; break
             case (angle>268 && angle<292): chosenNumber=9; break
             case (angle>299 && angle<322): chosenNumber=8; break
             case (angle>329 && angle<351): chosenNumber=7; break
@@ -75,8 +77,11 @@ rotating.addEventListener("mousedown",(e)=>{
             case (angle>147 && angle<172): chosenNumber=1; break
             default: chosenNumber=99;break
         }
-        mouseDown=true
-        startRotating()
+        if(radius > 100 && radius<160){
+            oldDeg=(parseInt(angle)-230+360)%360
+            mouseDown=true
+            startRotating()
+        }
 }
 })
 document.addEventListener("mouseup",(e)=>{
@@ -87,15 +92,11 @@ document.addEventListener("mouseup",(e)=>{
 })
 document.addEventListener("mousemove",(e)=>{
     if(mouseDown && chosenNumber<99){
-        let newDeg=(Math.atan2(e.pageY-changeAtan2StartY,e.pageX-changeAtan2StartX)*180/Math.PI+180).toFixed(0)
-        if(oldDeg<newDeg){
-            rotationDegree+=3
+        let newDeg=((Math.atan2(e.pageY-centerY,e.pageX-centerX)*180/Math.PI+180).toFixed(0)-230+360)%360
+        if(rotationDegree>=0){
+            rotationDegree=newDeg-oldDeg
             oneClick()
-        }else if(oldDeg>newDeg && rotationDegree>0) {
-            rotationDegree-=3
-            goBackSound()
         }
-        oldDeg=newDeg
     }
 })
 function clearRotation(){
